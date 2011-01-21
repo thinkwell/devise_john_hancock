@@ -77,5 +77,23 @@ module Devise::Strategies
       end
     end
 
+    context "with a non-existant api key" do
+      before(:each) do
+        stub(Devise::Mock::ApiKey).find_for_authentication({:id => '556'}){nil}
+        @strategy = strategy("http://example.com/categories/search?id=556&signature=foobar&timestamp=#{Time.now.to_i}")
+      end
+
+      it "is valid for checking authentication" do
+        @strategy.should be_valid
+      end
+
+      it "does not authenticate" do
+        @strategy.valid? && @strategy.authenticate!
+        @strategy.should_not be_halted
+        @strategy.result.should == :failure
+        @strategy.message.should == :invalid
+      end
+    end
+
   end
 end
