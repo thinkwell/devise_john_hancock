@@ -13,6 +13,11 @@ module Devise
   mattr_accessor :signature_algorithm_options
   @@signature_algorithm_options = {}
 
+  # Should we validate the signature?  Defaults to true.  Sometimes it is
+  # helpful to set this to false when testing via a browser.
+  mattr_accessor :signature_validate_signature
+  @@signature_validate_signature = true
+
   # Should signature timestamps be validated if the JohnHancock signature
   # supports it them?
   mattr_accessor :signature_validate_timestamp

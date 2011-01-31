@@ -21,6 +21,7 @@ module Devise::Models
       @model_class.should respond_to('signature_authenticatable')
       @model_class.should respond_to('signature_algorithm')
       @model_class.should respond_to('signature_algorithm_options')
+      @model_class.should respond_to('signature_validate_signature')
       @model_class.should respond_to('signature_validate_timestamp')
       @model_class.should respond_to('signature_timestamp_offset')
     end
@@ -129,6 +130,14 @@ module Devise::Models
         s = signature("http://example.com/categories/search?foo=bar&test=123&signature=foobar&timestamp=#{t}")
         @model.configure_signature!(s)
         @model.valid_signature?(s).should == :expired
+      end
+
+      it "does not validate signature if signature_validate_signature=false" do
+        stub(Devise::Mock::ApiKey).signature_validate_signature{false}
+        t = Time.now.to_i
+        s = signature("http://example.com/categories/search?foo=bar&test=123&signature=raboof&timestamp=#{t}")
+        @model.configure_signature!(s)
+        @model.valid_signature?(s).should == true
       end
 
       it "does not validate timestamp if signature_validate_timestamp=false" do

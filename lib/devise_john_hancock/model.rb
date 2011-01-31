@@ -3,7 +3,7 @@ module Devise::Models
     extend ActiveSupport::Concern
 
     def valid_signature?(signature)
-      return :invalid unless signature.valid_signature?
+      return :invalid unless !validate_signature? || signature.valid_signature?
       return :expired unless !validate_timestamp? || signature.valid_timestamp?
       true
     end
@@ -23,13 +23,17 @@ module Devise::Models
 
   private
 
+    def validate_signature?
+      !!self.class.signature_validate_signature
+    end
+
     def validate_timestamp?
       !!self.class.signature_validate_timestamp
     end
 
 
     module ClassMethods
-      Devise::Models.config(self, :signature_authenticatable, :signature_algorithm, :signature_algorithm_options, :signature_validate_timestamp, :signature_timestamp_offset)
+      Devise::Models.config(self, :signature_authenticatable, :signature_algorithm, :signature_algorithm_options, :signature_validate_signature, :signature_validate_timestamp, :signature_timestamp_offset)
 
       def signature_authenticatable?(strategy)
         signature_authenticatable.is_a?(Array) ?
