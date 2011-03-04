@@ -9,12 +9,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brandon Turner"]
-  s.date = %q{2011-01-14}
+  s.date = %q{2011-03-03}
   s.description = %q{API query signature authentication support for Devise using query parameters or HTTP headers}
   s.email = %q{bturner@bltweb.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.markdown"
   ]
   s.files = [
     ".document",
@@ -22,8 +22,10 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.markdown",
     "Rakefile",
+    "VERSION",
+    "devise_john_hancock.gemspec",
     "lib/devise_john_hancock.rb",
     "lib/devise_john_hancock/config.rb",
     "lib/devise_john_hancock/model.rb",
@@ -38,7 +40,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/thinkwell/devise_john_hancock}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.6.0}
   s.summary = %q{API query signature authentication support for Devise}
   s.test_files = [
     "spec/mock/api_key.rb",
@@ -49,7 +51,6 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then

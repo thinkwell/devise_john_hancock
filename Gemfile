@@ -1,8 +1,9 @@
+source "http://gem.thinkwell.com"
 source "http://rubygems.org"
 
 gem "rails", "~> 3.0.0"
 gem "devise", ">= 1.1.5"
-gem "john-hancock", :path => "../john-hancock"
+gem "john-hancock"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
