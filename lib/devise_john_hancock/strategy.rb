@@ -31,7 +31,8 @@ module Devise::Strategies
 
     def valid_for_signature_auth?
       signature_authenticatable? && valid_signature_algorithm? &&
-      valid_signature_format? && with_authentication_hash(signature_auth_hash)
+      valid_signature_format? && with_authentication_hash(signature_auth_hash) &&
+      authentication_hash.length > 0
     end
 
     def signature_authenticatable?
