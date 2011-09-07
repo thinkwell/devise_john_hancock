@@ -9,9 +9,8 @@ module Devise::Strategies
 
     def authenticate!
       resource = mapping.to.find_for_signature_authentication(authentication_hash)
-      resource.configure_signature!(signature) if resource
 
-      if validate(resource){ resource.valid_signature?(signature) }
+      if validate(resource){ resource.valid_signature?(signature, authentication_hash) }
         return if halted?
         resource.after_signature_authentication
         success!(resource)
