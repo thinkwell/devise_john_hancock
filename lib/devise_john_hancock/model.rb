@@ -1,3 +1,5 @@
+require 'devise_john_hancock/strategy'
+
 module Devise::Models
   module JohnHancockAuthenticatable
     extend ActiveSupport::Concern
