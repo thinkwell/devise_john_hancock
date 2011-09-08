@@ -12,10 +12,12 @@ module Devise::Strategies
 
       if validate(resource){ resource.valid_signature?(signature, authentication_hash) }
         return if halted?
+        DeviseJohnHancockAuthenticatable::Logger.send("authenticated!")
         resource.after_signature_authentication
         success!(resource)
       else
         return if halted?
+        DeviseJohnHancockAuthenticatable::Logger.send("not authenticated!")
         fail(:invalid)
       end
     end

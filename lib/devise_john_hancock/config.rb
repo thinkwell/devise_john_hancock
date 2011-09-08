@@ -30,4 +30,6 @@ module Devise
   mattr_accessor :signature_timestamp_offset
   @@signature_timestamp_offset = nil
 
+  mattr_accessor :john_hancock_logger
+  @@john_hancock_logger = true
 end
