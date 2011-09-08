@@ -5,7 +5,6 @@ Bundler.setup(:default, :test)
 
 require 'rspec'
 require 'rr'
-require 'rails'
 require 'mongoid'
 require 'devise'
 require 'devise_john_hancock'
