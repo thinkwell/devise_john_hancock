@@ -17,7 +17,7 @@ Jeweler::Tasks.new do |gem|
   gem.license = "MIT"
   gem.summary = %Q{API query signature authentication support for Devise}
   gem.description = %Q{API query signature authentication support for Devise using query parameters or HTTP headers}
-  gem.email = "bturner@bltweb.net"
+  gem.email = "bt@brandonturner.net"
   gem.authors = ["Brandon Turner"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
