@@ -3,7 +3,7 @@ source "http://rubygems.org"
 
 gem "rails", ">= 3.0.0"
 gem "devise", ">= 1.1.5"
-gem "john-hancock", ">= 0.0.2"
+gem "john-hancock", "~> 0.0.4"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

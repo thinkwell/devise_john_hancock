@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{devise_john_hancock}
+  s.name = "devise_john_hancock"
   s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Brandon Turner}]
-  s.date = %q{2011-09-08}
-  s.description = %q{API query signature authentication support for Devise using query parameters or HTTP headers}
-  s.email = %q{bturner@bltweb.net}
+  s.authors = ["Brandon Turner"]
+  s.date = "2011-11-02"
+  s.description = "API query signature authentication support for Devise using query parameters or HTTP headers"
+  s.email = "bturner@bltweb.net"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.markdown"
@@ -37,11 +37,11 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "spec/strategy_spec.rb"
   ]
-  s.homepage = %q{http://github.com/thinkwell/devise_john_hancock}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{API query signature authentication support for Devise}
+  s.homepage = "http://github.com/thinkwell/devise_john_hancock"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.10"
+  s.summary = "API query signature authentication support for Devise"
   s.test_files = [
     "spec/mock/api_key.rb",
     "spec/mock/test_signature.rb",
@@ -56,7 +56,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
       s.add_runtime_dependency(%q<devise>, [">= 1.1.5"])
-      s.add_runtime_dependency(%q<john-hancock>, [">= 0.0.2"])
+      s.add_runtime_dependency(%q<john-hancock>, ["~> 0.0.4"])
       s.add_development_dependency(%q<rspec>, ["~> 2.4.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
@@ -64,7 +64,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rails>, [">= 3.0.0"])
       s.add_dependency(%q<devise>, [">= 1.1.5"])
-      s.add_dependency(%q<john-hancock>, [">= 0.0.2"])
+      s.add_dependency(%q<john-hancock>, ["~> 0.0.4"])
       s.add_dependency(%q<rspec>, ["~> 2.4.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
@@ -73,7 +73,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rails>, [">= 3.0.0"])
     s.add_dependency(%q<devise>, [">= 1.1.5"])
-    s.add_dependency(%q<john-hancock>, [">= 0.0.2"])
+    s.add_dependency(%q<john-hancock>, ["~> 0.0.4"])
     s.add_dependency(%q<rspec>, ["~> 2.4.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
