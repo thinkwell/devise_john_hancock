@@ -13,7 +13,11 @@ require 'devise_john_hancock'
 
 
 Devise.setup do |config|
+  config.apply_schema = false
   require 'devise/orm/mongoid'
+  config.case_insensitive_keys = [ ]
+  config.use_salt_as_remember_token = true
+  config.reset_password_within = 2.hours
   config.signature_authenticatable = [:john_hancock]
   config.signature_algorithm = :devise_test_signature
 end

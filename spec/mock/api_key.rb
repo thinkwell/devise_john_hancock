@@ -3,6 +3,7 @@ module Devise
 
     class ApiKey
       include Mongoid::Document
+      field :secret
       devise :john_hancock_authenticatable, :authentication_keys => [:id]
     end
 
