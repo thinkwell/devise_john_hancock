@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   # s.add_development_dependency "rspec"
   s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
   s.add_runtime_dependency(%q<devise>, [">= 2.0.0"])
-  s.add_runtime_dependency(%q<john-hancock>, ["~> 0.0.4"])
+  s.add_runtime_dependency(%q<john-hancock>, ["~> 0.0.6"])
 end
