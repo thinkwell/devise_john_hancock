@@ -4,7 +4,7 @@ module Devise::Models
   module JohnHancockAuthenticatable
     extend ActiveSupport::Concern
 
-    def valid_signature?(signature, authentication_hash={})
+    def valid_signature?(signature)
       configure_signature!(signature)
       return :invalid unless !validate_signature? || signature.valid_signature?
       return :expired unless !validate_timestamp? || signature.valid_timestamp?

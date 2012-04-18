@@ -1,16 +1,16 @@
-require 'devise/strategies/authenticatable'
+require 'devise/strategies/base'
 
 module Devise::Strategies
-  class JohnHancockAuthenticatable < Authenticatable
+  class JohnHancockAuthenticatable < Base
 
     def valid?
       valid_for_signature_auth?
     end
 
     def authenticate!
-      resource = mapping.to.find_for_signature_authentication(authentication_hash)
+      resource = mapping.to.find_for_signature_authentication(signature_auth_hash)
 
-      if validate(resource){ resource.valid_signature?(signature, authentication_hash) }
+      if validate(resource){ resource.valid_signature?(signature) }
         return if halted?
         DeviseJohnHancockAuthenticatable::Logger.send("authenticated!")
         resource.after_signature_authentication
@@ -31,13 +31,11 @@ module Devise::Strategies
   private
 
     def valid_for_signature_auth?
-      signature_authenticatable? && valid_signature_algorithm? &&
-      valid_signature_format? && with_authentication_hash(:signature_auth, signature_auth_hash) &&
-      authentication_hash.length > 0
+      signature_authenticatable? && valid_signature_algorithm? && valid_signature_format?
     end
 
     def signature_authenticatable?
-      mapping.to.signature_authenticatable?(authenticatable_name)
+      mapping.to.signature_authenticatable?(:john_hancock)
     end
 
     def valid_signature_algorithm?
@@ -45,7 +43,7 @@ module Devise::Strategies
     end
 
     def valid_signature_format?
-      signature_auth_hash.is_a?(Hash)
+      signature.valid_format?
     end
 
     def signature_auth_hash
@@ -54,6 +52,21 @@ module Devise::Strategies
 
     def signature
       @signature ||= mapping.to.signature(request)
+    end
+
+    # Simply invokes valid_for_authentication? with the given block and deal with the result.
+    def validate(resource, &block)
+      result = resource && resource.valid_for_authentication?(&block)
+
+      case result
+      when String, Symbol
+        fail!(result)
+        false
+      when TrueClass
+        true
+      else
+        result
+      end
     end
 
   end
