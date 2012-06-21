@@ -4,7 +4,6 @@ require 'john-hancock/request_proxy/rack_request'
 
 require 'devise_john_hancock/logger'
 require 'devise_john_hancock/config'
-require 'devise_john_hancock/schema'
 
 Devise.add_module( :john_hancock_authenticatable,
   :strategy => true,

@@ -10,7 +10,7 @@ module Devise::Strategies
     def authenticate!
       resource = mapping.to.find_for_signature_authentication(signature_auth_hash)
 
-      if validate(resource){ resource.valid_signature?(signature) }
+      if resource && validate(resource){ resource.valid_signature?(signature) }
         return if halted?
         DeviseJohnHancockAuthenticatable::Logger.send("authenticated!")
         resource.after_signature_authentication
