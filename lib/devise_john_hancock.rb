@@ -1,6 +1,7 @@
 require 'devise'
 require 'john-hancock'
 require 'john-hancock/request_proxy/rack_request'
+require 'john-hancock/request_proxy/action_dispatch_request'
 
 require 'devise_john_hancock/logger'
 require 'devise_john_hancock/config'
